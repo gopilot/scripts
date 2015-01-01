@@ -8,11 +8,11 @@ var deploy = require("gulp-gh-pages");
 var static = require('node-static');
 
 // // compile css
-// gulp.task('stylus', function () {
-//     return gulp.src('./css/[!_]*.styl')
-//         .pipe(stylus({use: ['nib']}))
-//         .pipe(gulp.dest('./out/css'))
-// });
+gulp.task('stylus', function () {
+    return gulp.src('./css/[!_]*.styl')
+        .pipe(stylus({use: ['nib']}))
+        .pipe(gulp.dest('./out'))
+});
 
 // copy over everything from the static folder (images, etc)
 // NOTE: into the root of the out folder
@@ -46,9 +46,9 @@ gulp.task('scripts', function(){
     return when.all(tasks);
 });
 
-gulp.task('default', ['static', 'scripts']);
+gulp.task('default', ['static', 'scripts', 'stylus']);
 
-gulp.task('deploy', ['static', 'scripts'], function () {
+gulp.task('deploy', ['static', 'scripts', 'stylus'], function () {
     var remote = "https://github.com/gopilot/static.git";
 
     return gulp.src("./out/**/*")
