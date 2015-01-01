@@ -34,13 +34,29 @@ gulp.task('scripts', function(){
         ])
         .pipe(concat('event.js'))
         .pipe(minifyJS())
-        .pipe(gulp.dest('./out/'))
+        .pipe(gulp.dest('./out'))
     )
 
     tasks.push(
-        gulp.src('./js/**')
+        gulp.src([
+            './js/jquery.js',
+            './js/jquery.typewatch.js',
+            './js/mentors.js'
+        ])
+        .pipe(concat('mentors.js'))
         .pipe(minifyJS())
-        .pipe(gulp.dest('./out/'))
+        .pipe(gulp.dest('./out'))
+    )
+
+    tasks.push(
+        gulp.src([
+            './js/jquery.js',
+            './js/jquery.typewatch.js',
+            './js/complete.js'
+        ])
+        .pipe(concat('complete.js'))
+        .pipe(minifyJS())
+        .pipe(gulp.dest('./out'))
     )
 
     return when.all(tasks);
