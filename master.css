@@ -553,6 +553,9 @@ input::-webkit-inner-spin-button {
 .faq h5 + p {
   margin-top: 0.5rem;
 }
+.schedule .schedule-day {
+  margin-left: 5%;
+}
 .header a.button {
   margin: 10px 10px;
 }
