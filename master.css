@@ -580,6 +580,166 @@ input::-webkit-inner-spin-button {
   width: 90%;
   height: auto;
 }
+.projects .box.white {
+  padding: 25px;
+}
+.projects .project-list .no-projects {
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+}
+.projects .project-list .label {
+  display: inline-block;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  background: #fff;
+  width: auto;
+  overflow: hidden;
+  font-size: 22px;
+}
+.projects .project-list .project-background {
+  margin-top: -5px;
+  height: 200px;
+  background-color: #333;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-position-y: 60%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.projects .project-list .project-background .star {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #ffdf00;
+  font-size: 35px;
+  z-index: 10;
+}
+.projects .project-list .project-background .background-darken {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #222;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -ms-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+.projects .project-list .project-background:hover .background-darken {
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+}
+.projects .project-list .project-background .project-labels {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  z-index: 10;
+}
+.projects .project-list .project-background .project-labels .project-name {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.projects .project-list .project-background .project-labels .project-authors {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #ccc;
+}
+.projects .modal.view-project {
+  overflow: hidden;
+  padding: 0;
+  padding-top: 60px;
+  max-height: none;
+  background: #fff;
+}
+.projects .modal.view-project .close-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+.projects .modal.view-project .close-container .close-button {
+  float: right;
+  font-size: 60px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+.projects .modal.view-project .close-container .close-button:hover {
+  color: #1c9be6;
+}
+.projects .modal.view-project .close-container .star {
+  float: left;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.projects .modal.view-project .close-container .star .pe-7f-star {
+  line-height: 20px;
+  padding-right: 10px;
+  font-size: 40px;
+  color: #ffdf00;
+}
+.projects .modal.view-project .project-container {
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+.projects .modal.view-project .project-image {
+  position: relative;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 100%;
+  height: 200px;
+  margin: 0 -25px 25px;
+  padding: 0 12.5px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+.projects .modal.view-project .project-image .project-title {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  font-size: 60px;
+  top: 50%;
+  margin-top: -30px;
+  margin-left: 0px;
+  text-shadow: 0 1px 0 #333;
+  color: #fff;
+}
+.projects .modal.view-project .project-image .project-title.long {
+  font-size: 40px;
+}
+.projects .modal.view-project .project-description {
+  margin: 40px;
+}
+.projects .modal.view-project .project-description h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
 /* Animations */
 .spin {
   -webkit-animation: spin 1s linear infinite;
@@ -629,6 +789,7 @@ input::-webkit-inner-spin-button {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   background: rgba(28,155,230,0.7);
+  -webkit-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -963,16 +1124,19 @@ input::-webkit-inner-spin-button {
 .modal .modal-content .register-form .input-container.credit-card .input-container.half:last-child {
   border-left: 1px solid #36383a;
 }
-.modal.show {
+.modal.show,
+.modal.shown {
   visibility: visible;
 }
-.modal.show ~ .modal-overlay {
+.modal.show ~ .modal-overlay,
+.modal.shown ~ .modal-overlay {
   opacity: 1;
   -ms-filter: none;
   filter: none;
   visibility: visible;
 }
-.modal.show .modal-content {
+.modal.show .modal-content,
+.modal.shown .modal-content {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -o-transform: scale(1);
