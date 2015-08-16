@@ -7,6 +7,15 @@ var minifyJS = require('gulp-uglify');
 var deploy = require("gulp-gh-pages");
 var static = require('node-static');
 
+var file = new static.Server('./out');
+function runServer(port) {
+    require('http').createServer(function (request, response) {
+        request.addListener('end', function () {
+            file.serve(request, response);
+        }).resume();
+    }).listen(port || 9000);
+}
+
 // // compile css
 gulp.task('stylus', function () {
     return gulp.src('./css/[!_]*.styl')
@@ -59,6 +68,18 @@ gulp.task('scripts', function(){
         .pipe(gulp.dest('./out'))
     )
 
+    tasks.push(
+        gulp.src([
+            './js/marked.js',
+            './js/angular.js',
+            './js/ng-sanitize.js',
+            './js/projects.js'
+        ])
+        .pipe(concat('projects.js'))
+        .pipe(minifyJS())
+        .pipe(gulp.dest('./out'))
+    )
+
     return when.all(tasks);
 });
 
@@ -69,4 +90,11 @@ gulp.task('deploy', ['static', 'scripts', 'stylus'], function () {
 
     return gulp.src("./out/**/*")
         .pipe( deploy( remote ) );
+});
+
+gulp.task('watch', function() {
+    runServer();
+    gulp.watch('./static/**', ['static']);
+    gulp.watch('./css/*.styl', ['stylus']);
+    gulp.watch('./js/**/*.js', ['scripts'])
 });

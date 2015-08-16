@@ -1,3 +1,4 @@
+
 .modal-overlay
     position fixed
     width 100%
@@ -8,6 +9,7 @@
     z-index 1000
     opacity 0
     background rgba(28,155,230,0.7);
+    -webkit-transition all 0.3s
     transition all 0.3s
 
 .modal
@@ -265,7 +267,7 @@
                         &:last-child
                             border-left: 1px solid lighten(colors.slate, 10%)
 
-    &.show
+    &.show, &.shown
         visibility visible
 
         & ~ .modal-overlay

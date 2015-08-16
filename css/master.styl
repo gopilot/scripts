@@ -344,6 +344,133 @@ input::-webkit-inner-spin-button
             img
                 width 90%
                 height auto
+                
+.projects
+    .box.white
+        padding 25px
+    .project-list
+        .no-projects
+            font-size: 30px;
+            width: 100%;
+            text-align: center;
+        .label
+            display inline-block
+            padding 15px 25px
+            text-transform uppercase
+            background white
+            width auto
+            overflow hidden
+            font-size 22px
+        .project-background
+            margin-top -5px
+            height 200px
+            background-color #333
+            background-size cover
+            background-position center
+            background-position-y 60% // Kind of a magic number based on most photos
+            display inline-block
+            cursor pointer
+            position relative
+            padding: 15px
+            box-sizing border-box
+            .star
+                position absolute
+                top 15px
+                right 15px
+                color #FFDF00
+                font-size 35px
+                z-index 10
+            .background-darken
+                position absolute
+                width 100%
+                height 100%
+                top 0
+                left 0
+                background #222
+                opacity 0
+                transition opacity 0.4s
+                z-index 1
+
+            &:hover
+                .background-darken
+                    opacity 0.9
+                
+            .project-labels
+                position relative
+                display table-cell
+                vertical-align middle
+                z-index 10
+                .project-name
+                    font-size 30px
+                    color white
+                    margin-bottom 10px
+                .project-authors
+                    font-size 16px
+                    text-transform uppercase
+                    color #CCC
+                    
+    .modal.view-project
+        overflow hidden
+        padding 0
+        padding-top 60px
+        max-height none
+        background white
+        .close-container
+            position fixed
+            width 100%
+            top 0
+            left 0
+            right 0
+            height 60px
+            .close-button
+                float right
+                font-size 60px
+                padding-right 20px
+                cursor pointer
+                &:hover
+                    color: colors.blue
+            .star
+                float left
+                font-size 20px
+                padding-left 20px
+                padding-top 20px
+                .pe-7f-star
+                    line-height 20px
+                    padding-right 10px
+                    font-size 40px
+                    color #FFDF00
+        .project-container
+            overflow-y scroll
+            max-height: 80vh;
+        .project-image
+            position relative
+            box-sizing content-box
+            width 100%
+            height 200px
+            margin 0 -25px 25px
+            padding 0 12.5px
+            background-size cover
+            background-position center
+            .project-title
+                box-sizing border-box
+                position absolute
+                width 100%
+                text-align center
+                height 60px
+                font-size 60px
+                top 50%
+                margin-top -30px
+                margin-left 0px
+                text-shadow: 0 1px 0 #333;
+                color white
+                &.long
+                    font-size 40px
+        .project-description
+            margin 40px
+            h1
+                font-size 1.5em
+                font-weight bold
+                text-align center
 
 /* Animations */
 .spin 
