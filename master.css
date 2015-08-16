@@ -696,8 +696,12 @@ input::-webkit-inner-spin-button {
   font-size: 40px;
   color: #ffdf00;
 }
+.projects .modal.view-project .close-container .star span {
+  vertical-align: top;
+}
 .projects .modal.view-project .project-container {
   overflow-y: scroll;
+  overflow-x: hidden;
   max-height: 80vh;
 }
 .projects .modal.view-project .project-image {
@@ -1385,10 +1389,14 @@ input::-webkit-inner-spin-button {
     position: relative;
     width: 100% !important;
   }
+  a.action_link {
+    display: inline-block;
+    margin: 10px 25px;
+  }
   .modal {
     position: fixed;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     top: 0;
     left: 0;
     overflow: hidden;
@@ -1403,6 +1411,12 @@ input::-webkit-inner-spin-button {
   }
   .modal .modal-content .register-form .input-container {
     width: 80%;
+  }
+  .modal .project-title {
+    font-size: 1em;
+  }
+  .projects .modal.view-project .project-container {
+    max-height: 90vh;
   }
 }
 @-moz-keyframes spin {
