@@ -31,12 +31,15 @@
         .mobile-{cols}
             position relative
             width (cols/numcols) * 100% !important
-
+    
+    a.action_link
+        display inline-block
+        margin 10px 25px
 
     .modal
         position: fixed;
-        height 100%
-        width 100%
+        height 100vh
+        width 100vw
         top: 0
         left: 0
         overflow: hidden;
@@ -49,3 +52,10 @@
             .register-form
                 .input-container
                     width: 80%
+                    
+        .project-title
+            font-size 1em
+    .projects
+        .modal.view-project
+            .project-container
+                max-height 90vh
